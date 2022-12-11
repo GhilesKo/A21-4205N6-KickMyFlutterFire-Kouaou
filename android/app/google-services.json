@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "824606719749",
+    "project_id": "ghiles-flutter-fire-tp",
+    "storage_bucket": "ghiles-flutter-fire-tp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824606719749:android:b81b486ab37b537557816c",
+        "android_client_info": {
+          "package_name": "com.example.ghiles_flutter_fire_tp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "824606719749-6un4vvamu3lbd578lil5vvp48ned283e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ghiles_flutter_fire_tp",
+            "certificate_hash": "a45ca51504d21dc01b9b6dab7382f092de079228"
+          }
+        },
+        {
+          "client_id": "824606719749-c8uhla2rp4h45d69os4uohndts174re8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjiU_hWQJ7ZPovllCLIfqINjjUuZzbUaQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "824606719749-c8uhla2rp4h45d69os4uohndts174re8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "824606719749-0d25poqbuvh5h9i0mi7rkm4hh87sndnf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ghilesFlutterFireTp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
