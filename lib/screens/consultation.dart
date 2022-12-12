@@ -36,7 +36,7 @@ class _ConsultationScreenState extends State<ConsultationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold (
       drawer: const CustomDrawer(),
       appBar: AppBar(
         title: const Text('Consultation'),

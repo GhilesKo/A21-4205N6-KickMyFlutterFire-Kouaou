@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
+  List<Task> tasks = [];
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
               return const CircularProgressIndicator();
             }
             if (!snapshot.hasData) return const Text('No Data available');
-            List<Task> tasks = snapshot.data!.docs.map((e) {
+            tasks = snapshot.data!.docs.map((e) {
               //print(e.data().toString());
               return e.data();
             }).toList();
@@ -56,11 +56,11 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           },
         ),
-        floatingActionButton:  FloatingActionButton(
+        floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => const CreationScreen(),
+                builder: (context) =>  CreationScreen(tasks: this.tasks.map((e) => e.name).toList()),
               ),
             );
           },

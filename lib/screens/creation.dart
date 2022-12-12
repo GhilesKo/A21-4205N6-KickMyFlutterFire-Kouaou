@@ -6,14 +6,14 @@ import '../models/task.dart';
 import '../services/firestore.dart';
 
 class CreationScreen extends StatefulWidget {
-  const CreationScreen({Key? key}) : super(key: key);
+  const CreationScreen({Key? key, required this.tasks}) : super(key: key);
+  final List<String> tasks;
 
   @override
   State<CreationScreen> createState() => _CreationScreenState();
 }
 
 class _CreationScreenState extends State<CreationScreen> {
-
   DateTime? endDate;
   final TextEditingController _taskNameController = TextEditingController();
   final TextEditingController _endDateController = TextEditingController();
@@ -57,6 +57,9 @@ class _CreationScreenState extends State<CreationScreen> {
                       if (value == null || value.trim().isEmpty) {
                         return 'Please enter a valid task name';
                       }
+                      if(widget.tasks.contains(value.trim())){
+                        return 'Cette tâche exite déjà';
+                      }
                       return null;
                     },
                   ),
@@ -77,8 +80,6 @@ class _CreationScreenState extends State<CreationScreen> {
                       FocusScope.of(context).requestFocus(new FocusNode());
                       // Show Date Picker Here
                       await _selectDate(context);
-
-
                     },
                   ),
                   ElevatedButton(
