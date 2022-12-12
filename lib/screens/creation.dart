@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ghiles_flutter_fire_tp/shared/widgets/CustomDrawer.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../models/task.dart';
@@ -36,6 +37,7 @@ class _CreationScreenState extends State<CreationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: CustomDrawer(),
         appBar: AppBar(
           title: Text('Creation'),
         ),
@@ -99,7 +101,6 @@ class _CreationScreenState extends State<CreationScreen> {
       );
 
       print(task.toJson());
-
 
       //Task(this.name, this.start, this.end, this.pourcentageAvancement,this.userId);
       DataRepository.addTask(task)
