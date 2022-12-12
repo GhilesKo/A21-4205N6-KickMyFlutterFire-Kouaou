@@ -43,6 +43,8 @@ dependencies:
   json_annotation: ^4.7.0
   json_serializable: ^6.5.4
   intl: ^0.17.0
+  firebase_storage: ^11.0.7
+  image_picker: ^0.8.6
 
 dev_dependencies:
   flutter_test:

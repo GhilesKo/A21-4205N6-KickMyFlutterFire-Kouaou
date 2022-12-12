@@ -1,14 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'dart:developer';
+
 part 'task.g.dart';
 
 @JsonSerializable()
 class Task {
   String? id;
+  String userId;
+  String? photoUrl;
   String name;
   num pourcentageAvancement;
-  String userId;
   DateTime start;
   DateTime end;
 
@@ -22,16 +24,18 @@ class Task {
 
   Task.fromJson(Map<String, dynamic> json, String documentId)
       : id = documentId,
+        userId = json['userId'],
+        photoUrl = json['photoUrl'],
         name = json['name'],
         pourcentageAvancement = json['pourcentageAvancement'],
-        userId = json['userId'],
         start = (json['start']).toDate(),
         end = (json['end']).toDate();
 
   Map<String, dynamic> toJson() => {
         'name': name,
-        'pourcentageAvancement': pourcentageAvancement,
         'userId': userId,
+        'photoUrl': photoUrl,
+        'pourcentageAvancement': pourcentageAvancement,
         'start': start,
         'end': end,
       };

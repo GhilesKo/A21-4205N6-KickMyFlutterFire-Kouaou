@@ -17,8 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final Stream<QuerySnapshot> _usersCo =
-      FirebaseFirestore.instance.collection('users').snapshots();
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
             }
             if (!snapshot.hasData) return const Text('No Data available');
             List<Task> tasks = snapshot.data!.docs.map((e) {
-              print(e.data().toString());
+              //print(e.data().toString());
               return e.data();
             }).toList();
             return ListView.builder(
@@ -57,23 +56,15 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           },
         ),
-        floatingActionButton: Stack(
-          children: [
-            Align(alignment: Alignment.bottomLeft, child: SignOutButton()),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: FloatingActionButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const CreationScreen(),
-                    ),
-                  );
-                },
-                child: Icon(Icons.add),
+        floatingActionButton:  FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const CreationScreen(),
               ),
-            ),
-          ],
+            );
+          },
+          child: Icon(Icons.add),
         ));
   }
 }
