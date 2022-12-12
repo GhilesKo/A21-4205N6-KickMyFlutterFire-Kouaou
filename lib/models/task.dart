@@ -7,7 +7,7 @@ class Task {
   String name;
   DateTime start;
   DateTime end;
-  double pourcentageAvancement;
+  num pourcentageAvancement;
   String userId;
 
   Task(this.name, this.start, this.end, this.pourcentageAvancement,this.userId);

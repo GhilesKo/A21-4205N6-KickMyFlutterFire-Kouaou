@@ -10,7 +10,7 @@ Task _$TaskFromJson(Map<String, dynamic> json) => Task(
       json['name'] as String,
       DateTime.parse(json['start'] as String),
       DateTime.parse(json['end'] as String),
-      (json['pourcentageAvancement'] as num).toDouble(),
+      json['pourcentageAvancement'] as num,
       json['userId'] as String,
     );
 

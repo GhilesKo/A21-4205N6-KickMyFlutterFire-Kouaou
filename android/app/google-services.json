@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "824606719749-ra2itd7t306eemapkfrbhkp7a3g70tsu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ghiles_flutter_fire_tp",
+            "certificate_hash": "f88a0cec0669c8959e5b21620af02832fc04713a"
+          }
+        },
+        {
           "client_id": "824606719749-c8uhla2rp4h45d69os4uohndts174re8.apps.googleusercontent.com",
           "client_type": 3
         }
