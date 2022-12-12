@@ -36,7 +36,7 @@ class _ConsultationScreenState extends State<ConsultationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold (
+    return Scaffold(
       drawer: const CustomDrawer(),
       appBar: AppBar(
         title: const Text('Consultation'),
@@ -93,16 +93,18 @@ class _ConsultationScreenState extends State<ConsultationScreen> {
               fit: BoxFit.cover,
             );
     }
-    return Image.file(image!);
+    return Image.file(
+      image!,
+      fit: BoxFit.cover,
+    );
   }
 
   SaveTask() async {
     //Check if a new image was selected
     if (image != null) {
-
       //get the image ref (using the task unique id)
-      final storageImageRef = cloud_storage.FirebaseStorage.instance.ref('${widget.task.id}');
-
+      final storageImageRef =
+          cloud_storage.FirebaseStorage.instance.ref('${widget.task.id}');
 
       // upload the file  to cloud storage
       try {
