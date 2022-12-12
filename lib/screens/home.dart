@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutterfire_ui/auth.dart';
+import 'package:ghiles_flutter_fire_tp/screens/consultation.dart';
+import 'package:ghiles_flutter_fire_tp/services/firestore.dart';
 import 'package:ghiles_flutter_fire_tp/shared/widgets/CustomDrawer.dart';
 
 import '../models/task.dart';
@@ -24,22 +26,15 @@ class _HomeScreenState extends State<HomeScreen> {
         drawer: const CustomDrawer(),
         appBar: AppBar(title: const Text("Accueil")),
         body: StreamBuilder(
-          stream: FirebaseFirestore.instance
-              .collection('tasks')
-              .where('userId',
-                  isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-              .withConverter<Task>(
-                fromFirestore: (snapshot, _) => Task.fromJson(snapshot.data()!),
-                toFirestore: (task, _) => task.toJson(),
-              )
-              .snapshots(),
+          stream: DataRepository.userTasksCollectionStream,
           builder: (context, AsyncSnapshot<QuerySnapshot<Task>> snapshot) {
             if (snapshot.hasError) return const Text('Something went wrong');
-            if (snapshot.connectionState == ConnectionState.waiting)
+            if (snapshot.connectionState == ConnectionState.waiting) {
               return const CircularProgressIndicator();
+            }
             if (!snapshot.hasData) return const Text('No Data available');
             List<Task> tasks = snapshot.data!.docs.map((e) {
-              print(e.data().toJson());
+              print(e.data().toString());
               return e.data();
             }).toList();
             return ListView.builder(
@@ -48,6 +43,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 return ListTile(
                   //TODO: Display the task
                   title: Text(tasks[i].name),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            ConsultationScreen(task: tasks[i]),
+                      ),
+                    );
+                  },
                 );
               },
             );

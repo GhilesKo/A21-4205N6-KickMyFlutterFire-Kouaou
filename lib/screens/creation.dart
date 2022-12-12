@@ -26,7 +26,6 @@ class _CreationScreenState extends State<CreationScreen> {
         firstDate: now,
         lastDate: DateTime(2101));
     if (picked != null) {
-      print('hello $picked');
       setState(() {
         endDate = picked;
         _endDateController.text = DateFormat('yyyy/MM/dd').format(picked);
@@ -37,14 +36,14 @@ class _CreationScreenState extends State<CreationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: CustomDrawer(),
+        drawer: const CustomDrawer(),
         appBar: AppBar(
-          title: Text('Creation'),
+          title: const Text('Creation'),
         ),
         body: Form(
             key: _formKey,
             child: Padding(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
                   TextFormField(
@@ -103,11 +102,15 @@ class _CreationScreenState extends State<CreationScreen> {
       print(task.toJson());
 
       //Task(this.name, this.start, this.end, this.pourcentageAvancement,this.userId);
-      DataRepository.addTask(task)
-          .then((value) => print('SUCCESSFULLY ADDED TASK '))
-          .catchError((err) => print('ERROR ADDING TASK'));
-
-      Navigator.pop(context);
+      DataRepository.addTask(task).then((value) {
+        print('SUCCESSFULLY ADDED TASK ');
+        Navigator.pop(context);
+      }).catchError((err) {
+        print('ERROR ADDING TASK');
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('Erreur: ${err}'),
+        ));
+      });
     }
   }
 }

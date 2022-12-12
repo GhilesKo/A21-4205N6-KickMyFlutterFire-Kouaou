@@ -22,9 +22,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
           UserAccountsDrawerHeader(
               accountName: Text(AuthService.user!.email!),
               accountEmail: Text(AuthService.user!.displayName!),
-              currentAccountPicture: Image.network(
-
-                  AuthService.user!.photoURL ?? "https://cdn-icons-png.flaticon.com/512/3135/3135715.png")),
+              currentAccountPicture: Image.network(AuthService.user!.photoURL ??
+                  "https://cdn-icons-png.flaticon.com/512/3135/3135715.png")),
           ListTile(
             leading: Icon(Icons.home),
             title: Text('Accueil'),

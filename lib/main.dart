@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      //home: AddUser('adel', 'kouaou', 26),
       home: AuthGate(),
     );
   }
